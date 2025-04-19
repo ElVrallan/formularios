@@ -32,6 +32,10 @@ body {
     gap: 3vh 3vw;
 }
 
+a{
+    text-decoration: none;
+    color: inherit;
+}
 /* El resto de los estilos se mantienen igual */
 .item-nuevo {
     display: flex;
@@ -40,7 +44,7 @@ body {
 }
 
 .cuadro-nuevo {
-    width: 100%;
+    width: 95%;
     aspect-ratio: 1 / 1;
     background: linear-gradient(to right, #37C1F3, #1CADE4);
     border-radius: 20px;
@@ -66,7 +70,7 @@ body {
 }
 
 .imagen-formulario {
-    width: 100%;
+    width: 95%;
     aspect-ratio: 1 / 1;
     border-radius: 20px;
     object-fit: cover;
