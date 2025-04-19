@@ -1,0 +1,152 @@
+.contenedor-bienvenida {
+    position: relative;
+    width: auto;
+    height: 83vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.bloque-izquierda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagen-niño {
+    width: auto;
+    height: 700vh;
+    max-width: 50vw;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.bloque-izquierda .search-bar-welcome {
+    display: flex;
+    align-items: center;
+    margin-top: 2vh;
+}
+
+.bloque-izquierda .search-bar-welcome input[type="text"] {
+    width: 30vw;
+    padding: 13px 18px;
+    border: 5px solid #32bff2;
+    border-right: none;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    height: 56px;
+    box-sizing: border-box;
+    font-family: "Noto Sans", sans-serif;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.bloque-izquierda .search-bar-welcome button {
+    background-color: #32bff2;
+    border: 5px solid #32bff2;
+    border-left: none;
+    padding: 0 10px;
+    border-radius: 0 20px 20px 0;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.bloque-izquierda .search-bar-welcome svg {
+    fill: white;
+}
+
+.rectangulo-derecha {
+    background-color: white;
+    padding: 3vh 5vh;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    width: 28vw;
+    max-height: 80vh;
+    margin-left: auto;
+}
+
+.titulo-formulario {
+    margin: 0;
+    font-weight: 800;
+    font-family: "Noto Sans", sans-serif;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    text-align: left;
+}
+
+.linea-sup {
+    display: block;
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 6.5vh;
+    text-align: justify; /* Justifica para que siempre "llene" */
+}
+.linea-inf {
+    display: block;
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 9.5vh;
+    text-align: justify; /* Justifica para que siempre "llene" */
+}
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;; /* Distribuye verticalmente */
+    height: auto; /* O 100%, o lo que quieras relativo al contenedor padre */
+}
+
+.item-formulario {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.texto {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.5vh;
+    margin-top: 3vh;
+}
+
+.grupo-icono-texto {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre la paloma y el texto */
+}
+
+.texto-pequeña {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 4.5vh;
+}
+
+.paloma-check {
+    height: 6vh;
+    width: auto;
+}
+
+.button {
+    text-decoration: none;
+    height: 10vh;
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 3vw;
+    font-weight: 800;
+    color: white;
+    background: linear-gradient(to right, #32BFF2, #00AFEF);
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    margin-top: 4vh;
+}
+
+.button .cohete {
+    height: 120%;
+    width: auto;
+}
