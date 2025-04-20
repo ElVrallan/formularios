@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class preguntasModel extends Model
+{
+    protected $table = 'preguntas';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'formulario_id',
+        'pregunta',
+        'tipo'
+    ];
+    public $timestamps = false;
+}
