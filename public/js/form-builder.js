@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function getTypeLabel(type) {
         switch (type) {
             case "multiple":
-                return "Opción múltiple";
+                return "Opción Múltiple";
             case "text":
                 return "Texto";
             case "number":
@@ -143,6 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return "";
         }
     }
+    
 
     document.querySelectorAll(".field-option").forEach((btn) => {
         btn.addEventListener("click", function (e) {
@@ -165,4 +166,49 @@ document.addEventListener("DOMContentLoaded", () => {
     cancelBtn.addEventListener("click", () => {
         overlay.classList.add("hidden");
     });
+});
+
+document.getElementById("guardarFormularioBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Obtener el título
+    const titulo = document.querySelector(".editable-text").innerText;
+    document.getElementById("tituloFormulario").value = titulo;
+
+    // Mapeo de tipos internos al texto del ENUM de la base de datos
+    const typeMap = {
+        multiple: "Opción Múltiple",
+        text: "Texto",
+        number: "Número",
+        date: "Fecha"
+    };
+
+    // Obtener preguntas
+// Obtener preguntas
+const preguntas = [];
+document.querySelectorAll(".question-block").forEach((block) => {
+    const pregunta = block.querySelector(".editable-question").innerText;
+    const tipoInterno = block.getAttribute("data-type");
+    const tipo = typeMap[tipoInterno] || "";
+
+    let opciones = null;
+
+    if (tipoInterno === "multiple") {
+        opciones = [];
+        block.querySelectorAll(".multiple-options .editable-option").forEach((opt) => {
+            opciones.push(opt.innerText);
+        });
+    }
+
+    preguntas.push({
+        pregunta: pregunta,
+        tipo: tipo,
+        opciones: opciones // puede ser null si no es de tipo múltiple
+    });
+});
+
+
+    document.getElementById("preguntasJson").value = JSON.stringify(preguntas);
+
+    document.getElementById("formularioCreate").submit();
 });

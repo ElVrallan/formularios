@@ -11,7 +11,8 @@ class preguntasModel extends Model
     protected $fillable = [
         'formulario_id',
         'pregunta',
-        'tipo'
+        'tipo',
+        'opciones'
     ];
     public $timestamps = false;
 }

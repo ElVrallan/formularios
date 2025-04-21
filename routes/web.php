@@ -7,3 +7,5 @@ Route::get('/sobreNosotros', function () { return view('sobreNosotros');})->name
 Route::get('/buscarFormularios', [formularioController::class, 'buscarFormularios'])->name('buscarFormularios');
 Route::get('/empezar', [formularioController::class, 'mostrarFormularios'])->name('empezar');
 Route::get('/crearFormulario', function () { return view('crearFormulario');})->name('crearFormulario');
+
+Route::post('/formularios/store', [FormularioController::class, 'store'])->name('formularios.store');
