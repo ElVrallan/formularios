@@ -64,4 +64,20 @@ class FormularioController extends Controller
 
         return redirect()->back()->with('success', 'Formulario guardado correctamente.');
     }
+
+    
+    /**
+     * Editar un formulario existente con sus preguntas asociadas.
+     */
+    public function editar($id)
+    {
+        // Obtener el formulario por ID
+        $formulario = FormularioModel::findOrFail($id);
+
+        // Obtener las preguntas relacionadas
+        $preguntas = PreguntasModel::where('formulario_id', $id)->get();
+
+        // Pasar datos a la vista
+        return view('editarFormulario', compact('formulario', 'preguntas'));
+    }
 }
