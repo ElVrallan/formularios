@@ -120,12 +120,14 @@ document.addEventListener("DOMContentLoaded", () => {
         deleteBtn.innerHTML = "🗑️";
         deleteBtn.type = "button";
         deleteBtn.addEventListener("click", () => {
-            questionBlock.remove();
-            const nextElement = questionBlock.nextElementSibling;
-            if (nextElement && nextElement.classList.contains("divider-line")) {
-                nextElement.remove();
+            const dividerLine = questionBlock.nextElementSibling;
+            if (dividerLine && dividerLine.classList.contains("divider-line")) {
+                dividerLine.remove();
             }
+        
+            questionBlock.remove();
         });
+        
 
         deleteBtn.insertBefore(deleteText, deleteBtn.firstChild);
 

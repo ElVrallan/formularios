@@ -34,7 +34,7 @@ class FormularioController extends Controller
     /**
      * Almacenar un nuevo formulario con sus preguntas asociadas.
      */
-    public function store(Request $request)
+    public function guardarFormulario(Request $request)
     {
         $request->validate([
             'titulo' => 'required|string|max:255',
