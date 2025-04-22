@@ -2,67 +2,66 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\formularioModel;
-use App\Models\preguntasModel;
+use App\Models\FormularioModel;
+use App\Models\PreguntasModel;
 use Illuminate\Http\Request;
 
-class formularioController extends Controller
+class FormularioController extends Controller
 {
-    // Método para buscar formularios por ID o título
+    /**
+     * Buscar formularios por ID o título.
+     */
     public function buscarFormularios(Request $request)
     {
-        $q = $request->input('q');  // Capturamos el término de búsqueda
+        $q = $request->input('q');
 
-        // Verificamos si es un número (buscar por ID) o texto (buscar por título)
-        if (is_numeric($q)) {
-            $resultados = formularioModel::where('id', $q)->get();
-        } else {
-            $resultados = formularioModel::where('titulo', 'like', '%' . $q . '%')->get();
-        }
+        $formularios = is_numeric($q)
+            ? FormularioModel::where('id', $q)->get()
+            : FormularioModel::where('titulo', 'like', '%' . $q . '%')->get();
 
-        // Retornamos la vista con los resultados
-        return view('resultados', ['formularios' => $resultados]);
+        return view('resultados', compact('formularios'));
     }
 
+    /**
+     * Mostrar todos los formularios ordenados por ID descendente.
+     */
     public function mostrarFormularios()
     {
-        $formularios = FormularioModel::orderBy('id', 'desc')->get(); // Orden descendente
+        $formularios = FormularioModel::orderBy('id', 'desc')->get();
         return view('empezar', compact('formularios'));
     }
 
-public function store(Request $request)
-{
-    $formulario = formularioModel::create([
-        'titulo' => $request->input('titulo'),
-    ]);
+    /**
+     * Almacenar un nuevo formulario con sus preguntas asociadas.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'titulo' => 'required|string|max:255',
+            'preguntasJson' => 'required|string',
+        ]);
 
-    $preguntasJson = $request->input('preguntasJson');
-    $preguntas = json_decode($preguntasJson, true);
-    
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        dd('Error al decodificar JSON', json_last_error_msg(), $preguntasJson);
-    }
-    
-    if (!is_array($preguntas)) {
-        dd('El JSON no es un array', $preguntasJson);
-    }
-    
-    if (is_array($preguntas)) {
-        foreach ($preguntas as $p) {
-            preguntasModel::create([
+        $formulario = FormularioModel::create([
+            'titulo' => $request->input('titulo'),
+        ]);
+
+        $preguntas = json_decode($request->input('preguntasJson'), true);
+
+        if (json_last_error() !== JSON_ERROR_NONE || !is_array($preguntas)) {
+            return redirect()->back()->withErrors([
+                'preguntasJson' => 'El formato JSON de las preguntas no es válido.',
+            ])->withInput();
+        }
+
+        foreach ($preguntas as $pregunta) {
+            PreguntasModel::create([
                 'formulario_id' => $formulario->id,
-                'pregunta' => $p['pregunta'],
-                'tipo' => $p['tipo'],
-                'opciones' => isset($p['opciones']) ? json_encode($p['opciones']) : null,
+                'pregunta' => $pregunta['pregunta'],
+                'tipo' => $pregunta['tipo'],
+                'opciones' => isset($pregunta['opciones']) ? json_encode($pregunta['opciones']) : null,
             ]);
-        } 
-        
-        return redirect()->back()->with('success', 'Formulario guardado correctamente.');
-    } else {
-        // Puedes agregar esto para depurar si algo falla
-        dd('El JSON no es válido o está vacío', $request->input('preguntasJson'));
-    }
-    
-}
+        }
 
+        return redirect()->back()->with('success', 'Formulario guardado correctamente.');
+    }
 }

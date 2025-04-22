@@ -82,8 +82,8 @@
     display: block;
     width: 100%;
     font-family: "Noto Sans", sans-serif;
-    font-size: 6.5vh;
-    text-align: justify; /* Justifica para que siempre "llene" */
+    font-size: 6vh;
+    text-align: center; /* Justifica para que siempre "llene" */
 }
 .linea-inf {
     display: block;
