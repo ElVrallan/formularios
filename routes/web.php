@@ -7,6 +7,6 @@ Route::get('/sobreNosotros', function () { return view('sobreNosotros');})->name
 Route::get('/buscarFormularios', [formularioController::class, 'buscarFormularios'])->name('buscarFormularios');
 Route::get('/empezar', [formularioController::class, 'mostrarFormularios'])->name('empezar');
 Route::get('/crearFormulario', function () { return view('crearFormulario');})->name('crearFormulario');
-Route::get('/formularios/{id}/editar', [formularioController::class, 'editar'])->name('formularios.editar');
+Route::get('/formularios/{id}/editar', [formularioController::class, 'editarFormulario'])->name('editarFormulario');
 
 Route::post('/guardarFormulario', [formularioController::class, 'guardarFormulario'])->name('guardarFormulario');

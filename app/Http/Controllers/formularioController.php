@@ -69,7 +69,7 @@ class FormularioController extends Controller
     /**
      * Editar un formulario existente con sus preguntas asociadas.
      */
-    public function editar($id)
+    public function editarFormulario($id)
     {
         // Obtener el formulario por ID
         $formulario = FormularioModel::findOrFail($id);
