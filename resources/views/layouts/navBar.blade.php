@@ -25,7 +25,7 @@
     @endunless
 
     {{-- Mostrar barra de búsqueda solo donde debe aparecer --}}
-    @unless(Request::is('welcome') || Request::is('crearFormulario') || Request::is('responderFormulario') || Request::is('formularios*'))
+    @unless(Request::is('/') || Request::is('crearFormulario') || Request::is('responderFormulario') || Request::is('formularios*'))
     <div class="right">
             <form class="search-bar" action="buscarFormularios" method="GET">
                 <input type="text" name="q" placeholder="Buscar Formular.io" aria-label="Buscar Formular.io">
