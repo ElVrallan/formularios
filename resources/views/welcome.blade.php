@@ -53,7 +53,7 @@
       </div>
     </div>
 
-  <a href="empezar" class="button">
+  <a href="mostrarFormularios" class="button">
     ¡A por ello!
     <img src="{{ asset('images/cohete.svg') }}" alt="cohete" class="cohete">
   </a>
