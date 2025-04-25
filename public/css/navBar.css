@@ -6,6 +6,7 @@ body {
 }
 
 .background-svg {
+    font-family: 'Noto Sans', sans-serif;
     position: fixed;
     top: -50%;
     left: -30%;
@@ -15,6 +16,7 @@ body {
     pointer-events: none; /* para que no interrumpa clics */
 }
 .background-svg img {
+    font-family: 'Noto Sans', sans-serif;
     width: 100%;
     height: auto;
 }
