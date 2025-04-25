@@ -11,3 +11,4 @@ Route::get('/formularios/{id}/editar', [formularioController::class, 'editarForm
 
 Route::post('/guardarFormulario', [formularioController::class, 'guardarFormulario'])->name('guardarFormulario');
 Route::put('/formularios/{id}', [FormularioController::class, 'update'])->name('empezar');
+Route::delete('/formularios/{id}', [FormularioController::class, 'destroy'])->name('deleteFormulario');

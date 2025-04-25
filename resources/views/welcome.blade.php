@@ -8,7 +8,7 @@
     <img src="{{ asset('images/niño.svg') }}" alt="Niño" class="imagen-niño">
 
     <form class="search-bar-welcome" action="{{ route('buscarFormularios') }}" method="GET">
-      <input type="text" name="q" placeholder="Buscar Formular.io">
+      <input type="text" name="q" placeholder="Buscar Formular.io a responder">
       <button type="submit">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 16 16">
           <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018" />

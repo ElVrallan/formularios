@@ -114,8 +114,7 @@
         </div>
 
         <div class="sidebar-bottom-btn">
-            <!-- Botón Eliminar -->
-            <button class="circle-btn red-btn">
+            <button class="circle-btn red-btn" id="deleteFormBtn">
                 <div class="tooltip">Eliminar <br> formulario</div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
@@ -126,6 +125,22 @@
     </div>
 </div>
 
-<script src="{{ asset('js/form-builder.js') }}"></script>
+<div id="deleteOverlay" class="overlay hidden">
+    <div class="confirmation-box">
+        <p class="confirmation-text">
+            ¿Realmente deseas eliminar este formulario? <br>
+            Se perderán todas las respuestas correspondientes
+        </p>
+        <div class="confirmation-buttons">
+            <button id="cancelDelete" class="btn-cancel">NO :)</button>
+            <form action="{{ route('deleteFormulario', $formulario->id) }}" method="POST" style="display: inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn-confirm">SI D:</button>
+            </form>
+        </div>
+    </div>
+</div>
 
+<script src="{{ asset('js/form-builder.js') }}"></script>
 @endsection

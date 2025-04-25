@@ -1,5 +1,5 @@
 @extends('layouts.navbar')
-<link rel="stylesheet" href="{{ asset('css/mostrarFormularios.css') }}">
+<link rel="stylesheet" href="{{ asset('css/empezar.css') }}">
 
 @section('content')
 <div class="contenedor-empezar">
@@ -23,7 +23,7 @@
 
             <!-- Resto de los formularios -->
             @foreach ($formularios as $formulario)
-            <a href="{{ route('formularios.editar', $formulario->id) }}" class="item-formulario-link">
+            <a href="{{ route('editarFormulario', $formulario->id) }}" class="item-formulario-link">
                 <div class="item-formulario">
                     <img src="{{ asset('images/formulario default.png') }}" alt="Formulario" class="imagen-formulario">
                     <div class="titulo-formulario">{{ $formulario->titulo }}</div>

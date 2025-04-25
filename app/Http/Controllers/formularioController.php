@@ -19,7 +19,7 @@ class FormularioController extends Controller
             ? FormularioModel::where('id', $q)->get()
             : FormularioModel::where('titulo', 'like', '%' . $q . '%')->get();
 
-        return view('resultados', compact('formularios'));
+        return view('buscarFormularios', compact('formularios'));
     }
 
     /**
@@ -28,7 +28,7 @@ class FormularioController extends Controller
     public function mostrarFormularios()
     {
         $formularios = FormularioModel::orderBy('id', 'desc')->get();
-        return view('empezar', compact('formularios'));
+        return view('mostrarFormularios', compact('formularios'));
     }
 
     /**
@@ -129,5 +129,28 @@ class FormularioController extends Controller
 
         // Redirigir con un mensaje de éxito
         return redirect()->route('mostrarFormularios')->with('success', 'Formulario actualizado correctamente.');
+    }
+
+    /**
+     * Eliminar un formulario junto con sus preguntas y respuestas relacionadas.
+     */
+    public function destroy($id)
+    {
+        $formulario = FormularioModel::find($id);
+
+        if ($formulario) {
+            // Verificar si el formulario tiene preguntas relacionadas
+            if ($formulario->preguntas && $formulario->preguntas->isNotEmpty()) {
+                foreach ($formulario->preguntas as $pregunta) {
+                    $pregunta->respuestas()->delete(); // Eliminar respuestas relacionadas
+                    $pregunta->delete(); // Eliminar la pregunta
+                }
+            }
+
+            // Eliminar el formulario
+            $formulario->delete();
+        }
+
+        return redirect()->route('mostrarFormularios')->with('success', 'Formulario eliminado correctamente.');
     }
 }

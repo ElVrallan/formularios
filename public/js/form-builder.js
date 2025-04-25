@@ -132,4 +132,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const formId = document.getElementById("formularioCreate") ? "formularioCreate" : "formularioEdit";
         document.getElementById(formId).submit();
     });
+
+    //Eliminar formulario
+    document.getElementById('deleteFormBtn').addEventListener('click', function () {
+        document.getElementById('deleteOverlay').classList.toggle('hidden');
+    });
+
+    document.getElementById('cancelDelete').addEventListener('click', function () {
+        document.getElementById('deleteOverlay').classList.add('hidden');
+    });
 });

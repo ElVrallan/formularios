@@ -28,7 +28,7 @@
     @unless(Request::is('/') || Request::is('crearFormulario') || Request::is('responderFormulario') || Request::is('formularios*'))
     <div class="right">
             <form class="search-bar" action="buscarFormularios" method="GET">
-                <input type="text" name="q" placeholder="Buscar Formular.io" aria-label="Buscar Formular.io">
+                <input type="text" name="q" placeholder="Buscar Formular.io" aria-label="Buscar Formular.io  a responder">
                 <button type="submit" aria-label="Enviar búsqueda">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 16 16">
                         <path d="M6.5 4.482c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018"/>
