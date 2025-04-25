@@ -62,7 +62,7 @@ class FormularioController extends Controller
             ]);
         }
 
-        return redirect()->route('empezar')->with('success', 'Formulario guardado correctamente.');
+        return redirect()->route('mostrarFormularios')->with('success', 'Formulario guardado correctamente.');
     }
 
     
