@@ -14,7 +14,7 @@
         </div>
 
         <div class="form-body">
-            <form id="formularioCreate" action="guardarFormulario" method="POST">
+            <form id="formularioCreate" action="{{ route('guardarFormulario') }}" method="POST">
                 @csrf
                 <input type="hidden" name="titulo" id="tituloFormulario">
                 <input type="hidden" id="preguntasJson" name="preguntasJson">

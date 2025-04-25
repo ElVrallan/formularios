@@ -128,7 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("tituloFormulario").value = tituloFormulario;
         document.getElementById("preguntasJson").value = JSON.stringify(preguntas);
 
-        // Enviar el formulario
-        document.getElementById("formularioEdit").submit();
+        // Determinar el formulario a enviar (crear o editar)
+        const formId = document.getElementById("formularioCreate") ? "formularioCreate" : "formularioEdit";
+        document.getElementById(formId).submit();
     });
 });
