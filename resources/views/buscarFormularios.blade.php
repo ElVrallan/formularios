@@ -7,10 +7,10 @@
 
         <div class="grid-formularios">
             @forelse ($formularios as $formulario)
-                <div class="item-formulario">
+            <a href="{{ route('responderFormulario', $formulario->id) }}" class="item-formulario-link">
                     <img src="{{ asset('images/formulario default.png') }}" alt="Formulario" class="imagen-formulario">
                     <div class="titulo-formulario">{{ $formulario->titulo }}</div>
-                </div>
+                </a>
             @empty
                 <p>No se encontraron resultados para: <strong>{{ request('q') }}</strong></p>
             @endforelse

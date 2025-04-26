@@ -153,4 +153,31 @@ class FormularioController extends Controller
 
         return redirect()->route('mostrarFormularios')->with('success', 'Formulario eliminado correctamente.');
     }
+
+    public function responderFormulario($id)
+    {
+        // Obtener el formulario por ID
+        $formulario = FormularioModel::findOrFail($id);
+    
+        // Obtener las preguntas relacionadas manualmente
+        $preguntas = PreguntasModel::where('formulario_id', $formulario->id)->get();
+    
+        // Pasar los datos del formulario y las preguntas a la vista
+        return view('responderFormulario', compact('formulario', 'preguntas'));
+    }
+
+public function guardarRespuestas(Request $request, $id)
+{
+    $formulario = FormularioModel::findOrFail($id);
+
+    foreach ($request->input('respuestas') as $preguntaId => $respuesta) {
+        // Guardar cada respuesta en la base de datos
+        \App\Models\RespuestasModel::create([
+            'pregunta_id' => $preguntaId,
+            'respuesta' => $respuesta,
+        ]);
+    }
+
+    return redirect()->route('responderFormulario', ['id' => $id])->with('success', 'Respuestas enviadas correctamente.');
+}
 }

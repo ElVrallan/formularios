@@ -12,4 +12,9 @@ class formularioModel extends Model
         'titulo'
     ];
     public $timestamps = false;
+
+    public function preguntas()
+    {
+        return $this->hasMany(PreguntasModel::class, 'formulario_id');
+    }
 }
