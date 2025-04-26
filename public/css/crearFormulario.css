@@ -458,3 +458,29 @@ body {
 .hidden {
     display: none;
 }
+
+.envRespBtn {
+    text-decoration: none;
+    height: 10vh;
+    width: 40%;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 3vw;
+    font-weight: 800;
+    color: white;
+    background: linear-gradient(to right, #32BFF2, #00AFEF);
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 4vh auto; /* Centrar horizontalmente */
+}
+
+.auto-resize {
+    resize: none; /* Deshabilita el redimensionamiento manual */
+    overflow: hidden; /* Oculta el desplazamiento */
+    min-height: 2rem; /* Altura mínima */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    box-sizing: border-box; /* Incluye padding y border en el ancho */
+}

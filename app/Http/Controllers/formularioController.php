@@ -178,6 +178,6 @@ public function guardarRespuestas(Request $request, $id)
         ]);
     }
 
-    return redirect()->route('responderFormulario', ['id' => $id])->with('success', 'Respuestas enviadas correctamente.');
+    return redirect()->route('welcome')->with('success', 'Respuestas enviadas correctamente.');
 }
 }

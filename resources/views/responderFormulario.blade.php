@@ -26,8 +26,7 @@
                             <div class="response-container">
                                 @if ($pregunta->tipo === 'Texto')
                                     <!-- Input para preguntas de texto -->
-                                    <input type="text" name="respuestas[{{ $pregunta->id }}]" class="question-input" required>
-                                @elseif ($pregunta->tipo === 'Número')
+                                    <textarea name="respuestas[{{ $pregunta->id }}]" class="question-input auto-resize" rows="1" required></textarea>                                @elseif ($pregunta->tipo === 'Número')
                                     <!-- Input para preguntas de número -->
                                     <input type="number" name="respuestas[{{ $pregunta->id }}]" class="question-input" required>
                                 @elseif ($pregunta->tipo === 'Fecha')
@@ -69,16 +68,56 @@
                         </div>
                     @endforeach
                 </div>
-                <button type="submit" class="circle-btn blue-btn">
-                    <div class="tooltip">Enviar respuestas</div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
-                        <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z" />
-                        <path d="M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z" />
-                    </svg>
+                <button type="submit" class="envRespBtn">Enviar respuestas
                 </button>
             </form>
         </div>
+
+            <!-- Rectángulo derecho (barra lateral fija) -->
+    <div class="sidebar-fixed">
+        <div class="sidebar-buttons">
+            <button class="circle-btn blue-btn">
+                <div class="tooltip">Compartir <br> formulario</div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
+                    <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5" />
+                </svg>
+            </button>
+
+        </div>
+
+        <div class="sidebar-bottom-btn">
+            <button class="circle-btn red-btn" id="deleteFormBtn">
+                <div class="tooltip">Eliminar <br> formulario</div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay oscuro y modal de confirmación -->
+    <div id="deleteOverlay" class="overlay hidden">
+        <div class="confirmation-box">
+            <p class="confirmation-text">
+                ¿Realmente deseas eliminar este formulario? <br>
+                Se perderán todas las respuestas correspondientes
+            </p>
+            <div class="confirmation-buttons">
+                <button id="cancelDelete" class="btn-cancel">NO :)</button>
+                <a href="{{ url('mostrarFormularios') }}" class="btn-confirm">SI D:</a>
+            </div>
+        </div>
+    </div>
     </div>
 </div>
 
+<script>
+    document.addEventListener('input', function (event) {
+    if (event.target.classList.contains('auto-resize')) {
+        event.target.style.height = 'auto'; // Resetea la altura
+        event.target.style.height = event.target.scrollHeight + 'px'; // Ajusta la altura al contenido
+    }
+});
+</script>
 @endsection
