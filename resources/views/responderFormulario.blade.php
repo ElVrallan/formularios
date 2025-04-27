@@ -105,7 +105,7 @@
             </p>
             <div class="confirmation-buttons">
                 <button id="cancelDelete" class="btn-cancel">NO :)</button>
-                <a href="{{ url('mostrarFormularios') }}" class="btn-confirm">SI D:</a>
+                <a href="{{ url('/') }}" class="btn-confirm">SI D:</a>
             </div>
         </div>
     </div>
@@ -114,10 +114,20 @@
 
 <script>
     document.addEventListener('input', function (event) {
-    if (event.target.classList.contains('auto-resize')) {
-        event.target.style.height = 'auto'; // Resetea la altura
-        event.target.style.height = event.target.scrollHeight + 'px'; // Ajusta la altura al contenido
-    }
-});
+        if (event.target.classList.contains('auto-resize')) {
+            event.target.style.height = 'auto'; // Resetea la altura
+            event.target.style.height = event.target.scrollHeight + 'px'; // Ajusta la altura al contenido
+        }
+    });
+
+    // Mostrar el overlay al hacer clic en el botón de eliminar
+    document.getElementById('deleteFormBtn').addEventListener('click', function () {
+        document.getElementById('deleteOverlay').classList.remove('hidden');
+    });
+
+    // Ocultar el overlay al hacer clic en el botón de cancelar
+    document.getElementById('cancelDelete').addEventListener('click', function () {
+        document.getElementById('deleteOverlay').classList.add('hidden');
+    });
 </script>
 @endsection
