@@ -102,7 +102,7 @@
             </button>
 
             <!-- Botón Ver Respuestas -->
-            <button class="circle-btn blue-btn">
+            <button class="circle-btn blue-btn" onclick="window.location.href='{{ route('verRespuestas', $formulario->id) }}'">
                 <div class="tooltip">Ver <br> respuestas</div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
                     <path

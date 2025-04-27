@@ -13,4 +13,9 @@ class respuestasModel extends Model
         'respuesta'
     ];
     public $timestamps = false;
+
+    public function pregunta()
+    {
+        return $this->belongsTo(PreguntasModel::class, 'pregunta_id');
+    }
 }

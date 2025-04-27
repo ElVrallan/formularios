@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FormularioModel;
 use App\Models\PreguntasModel;
+use App\Models\RespuestasModel;
 use Illuminate\Http\Request;
 
 class FormularioController extends Controller
@@ -166,18 +167,30 @@ class FormularioController extends Controller
         return view('responderFormulario', compact('formulario', 'preguntas'));
     }
 
-public function guardarRespuestas(Request $request, $id)
-{
-    $formulario = FormularioModel::findOrFail($id);
+    public function guardarRespuestas(Request $request, $id)
+    {
+        $formulario = FormularioModel::findOrFail($id);
 
-    foreach ($request->input('respuestas') as $preguntaId => $respuesta) {
-        // Guardar cada respuesta en la base de datos
-        \App\Models\RespuestasModel::create([
-            'pregunta_id' => $preguntaId,
-            'respuesta' => $respuesta,
-        ]);
+        foreach ($request->input('respuestas') as $preguntaId => $respuesta) {
+            // Guardar cada respuesta en la base de datos
+            \App\Models\RespuestasModel::create([
+                'pregunta_id' => $preguntaId,
+                'respuesta' => $respuesta,
+            ]);
+        }
+
+        return redirect()->route('welcome')->with('success', 'Respuestas enviadas correctamente.');
     }
 
-    return redirect()->route('welcome')->with('success', 'Respuestas enviadas correctamente.');
-}
+    public function verRespuestas($id)
+    {
+        $formulario = FormularioModel::findOrFail($id);
+
+        // Obtener las respuestas relacionadas directamente desde el modelo RespuestasModel
+        $respuestas = RespuestasModel::whereHas('pregunta', function ($query) use ($id) {
+            $query->where('formulario_id', $id);
+        })->get();
+
+        return view('verRespuestas', compact('formulario', 'respuestas'));
+    }
 }
