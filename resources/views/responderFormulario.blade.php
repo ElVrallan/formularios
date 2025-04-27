@@ -100,8 +100,7 @@
     <div id="deleteOverlay" class="overlay hidden">
         <div class="confirmation-box">
             <p class="confirmation-text">
-                ¿Realmente deseas eliminar este formulario? <br>
-                Se perderán todas las respuestas correspondientes
+                ¿Realmente deseas eliminar tus respuestas?
             </p>
             <div class="confirmation-buttons">
                 <button id="cancelDelete" class="btn-cancel">NO :)</button>
