@@ -15,4 +15,9 @@ class preguntasModel extends Model
         'opciones'
     ];
     public $timestamps = false;
+
+    public function respuestas()
+    {
+        return $this->hasMany(RespuestasModel::class, 'pregunta_id');
+    }
 }

@@ -141,11 +141,9 @@ class FormularioController extends Controller
 
         if ($formulario) {
             // Verificar si el formulario tiene preguntas relacionadas
-            if ($formulario->preguntas && $formulario->preguntas->isNotEmpty()) {
-                foreach ($formulario->preguntas as $pregunta) {
-                    $pregunta->respuestas()->delete(); // Eliminar respuestas relacionadas
-                    $pregunta->delete(); // Eliminar la pregunta
-                }
+            foreach ($formulario->preguntas as $pregunta) {
+                $pregunta->respuestas()->delete(); // Eliminar respuestas relacionadas
+                $pregunta->delete(); // Eliminar la pregunta
             }
 
             // Eliminar el formulario
