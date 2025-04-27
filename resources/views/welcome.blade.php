@@ -4,9 +4,12 @@
 @section('content')
 
 <div class="contenedor-bienvenida">
+  <!-- Left Block -->
   <div class="bloque-izquierda">
+    <!-- Image -->
     <img src="{{ asset('images/niño.svg') }}" alt="Niño" class="imagen-niño">
 
+    <!-- Search Bar -->
     <form class="search-bar-welcome" action="{{ route('buscarFormularios') }}" method="GET">
       <input type="text" name="q" placeholder="Buscar Formular.io a responder">
       <button type="submit">
@@ -18,14 +21,17 @@
     </form>
   </div>
 
+  <!-- Right Block -->
   <div class="rectangulo-derecha">
+    <!-- Title -->
     <h2 class="titulo-formulario">
       <div class="linea-sup">¡Crea un increíble</div>
       <div class="linea-inf">Formular.io!</div>
     </h2>
 
+    <!-- Features List -->
     <div class="contenido">
-      <!-- Ítem 1 -->
+      <!-- Feature 1 -->
       <div class="item-formulario">
         <div class="texto">1. Facilitate la vida ;)</div>
         <div class="grupo-icono-texto">
@@ -34,7 +40,7 @@
         </div>
       </div>
 
-      <!-- Ítem 2 -->
+      <!-- Feature 2 -->
       <div class="item-formulario">
         <div class="texto">2. Respuestas al toque</div>
         <div class="grupo-icono-texto">
@@ -43,7 +49,7 @@
         </div>
       </div>
 
-      <!-- Ítem 3 -->
+      <!-- Feature 3 -->
       <div class="item-formulario">
         <div class="texto">3. Comparte fácil</div>
         <div class="grupo-icono-texto">
@@ -53,11 +59,11 @@
       </div>
     </div>
 
-  <a href="mostrarFormularios" class="button">
-    ¡A por ello!
-    <img src="{{ asset('images/cohete.svg') }}" alt="cohete" class="cohete">
-  </a>
-
+    <!-- Call-to-Action Button -->
+    <a href="mostrarFormularios" class="button">
+      ¡A por ello!
+      <img src="{{ asset('images/cohete.svg') }}" alt="cohete" class="cohete">
+    </a>
   </div>
 </div>
 

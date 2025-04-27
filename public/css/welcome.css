@@ -1,3 +1,4 @@
+/* General Container */
 .contenedor-bienvenida {
     position: relative;
     width: auto;
@@ -8,6 +9,7 @@
     box-sizing: border-box;
 }
 
+/* Left Block */
 .bloque-izquierda {
     display: flex;
     flex-direction: column;
@@ -21,6 +23,7 @@
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
+/* Search Bar */
 .bloque-izquierda .search-bar-welcome {
     display: flex;
     align-items: center;
@@ -58,6 +61,7 @@
     fill: white;
 }
 
+/* Right Block */
 .rectangulo-derecha {
     background-color: white;
     padding: 3vh 5vh;
@@ -67,6 +71,7 @@
     margin-left: auto;
 }
 
+/* Title */
 .titulo-formulario {
     margin: 0;
     font-weight: 800;
@@ -79,34 +84,29 @@
 }
 
 .linea-sup {
-    display: block;
-    width: 100%;
-    font-family: "Noto Sans", sans-serif;
     font-size: 6vh;
-    text-align: center; /* Justifica para que siempre "llene" */
-}
-.linea-inf {
-    display: block;
-    width: 100%;
-    font-family: "Noto Sans", sans-serif;
-    font-size: 9.5vh;
-    text-align: justify; /* Justifica para que siempre "llene" */
+    text-align: center;
 }
 
+.linea-inf {
+    font-size: 9.5vh;
+    text-align: justify;
+}
+
+/* Features List */
 .contenido {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;; /* Distribuye verticalmente */
-    height: auto; /* O 100%, o lo que quieras relativo al contenedor padre */
+    justify-content: flex-start;
+    height: auto;
 }
 
 .item-formulario {
     display: flex;
     flex-direction: column;
-  }
-  
+}
+
 .texto {
-    font-family: "Noto Sans", sans-serif;
     font-size: 4.5vh;
     margin-top: 3vh;
 }
@@ -114,11 +114,10 @@
 .grupo-icono-texto {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre la paloma y el texto */
+    gap: 10px;
 }
 
 .texto-pequeña {
-    font-family: "Noto Sans", sans-serif;
     font-size: 4.5vh;
 }
 
@@ -127,11 +126,11 @@
     width: auto;
 }
 
+/* Call-to-Action Button */
 .button {
     text-decoration: none;
     height: 10vh;
     width: 100%;
-    font-family: "Noto Sans", sans-serif;
     font-size: 3vw;
     font-weight: 800;
     color: white;

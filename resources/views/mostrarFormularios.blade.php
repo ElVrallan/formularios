@@ -5,8 +5,9 @@
 <div class="contenedor-empezar">
     <div class="cuadro-blanco">
 
+        <!-- Grid of Formularios -->
         <div class="grid-formularios">
-            <!-- Ítem NUEVO -->
+            <!-- New Formulario Item -->
             <a href="crearFormulario">
                 <div class="item-nuevo">
                     <div class="cuadro-nuevo">
@@ -20,8 +21,7 @@
                 </div>
             </a>
 
-
-            <!-- Resto de los formularios -->
+            <!-- Existing Formularios -->
             @foreach ($formularios as $formulario)
             <a href="{{ route('editarFormulario', $formulario->id) }}" class="item-formulario-link">
                 <div class="item-formulario">
@@ -30,8 +30,6 @@
                 </div>
             </a>
             @endforeach
-
-
         </div>
 
     </div>

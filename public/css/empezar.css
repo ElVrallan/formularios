@@ -1,3 +1,4 @@
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -9,34 +10,37 @@ body {
     background-color: #f2f2f2;
 }
 
-/* El contenedor principal debe ocupar todo el ancho de la pantalla */
+/* Main Container */
 .contenedor-empezar {
-    width: 100%;  /* Asegura que ocupe todo el ancho */
+    width: 100%; /* Ensures full width */
     padding: 0;
     display: flex;
     justify-content: center;
 }
 
-/* El cuadro blanco ahora ocupa todo el ancho */
+/* White Box */
 .cuadro-blanco {
-    width: 100%;   /* Ancho completo */
-    max-width: 100vw; /* Opcional: puedes poner un max-width si no quieres que se estire demasiado */
+    width: 100%; /* Full width */
+    max-width: 100vw; /* Optional: Prevents excessive stretching */
     background-color: white;
     padding: 4vh 4vw;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
+/* Grid Layout for Formularios */
 .grid-formularios {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 3vh 3vw;
 }
 
-a{
+/* Links */
+a {
     text-decoration: none;
     color: inherit;
 }
-/* El resto de los estilos se mantienen igual */
+
+/* New Formulario Item */
 .item-nuevo {
     display: flex;
     flex-direction: column;
@@ -63,6 +67,7 @@ a{
     text-align: center;
 }
 
+/* Existing Formulario Items */
 .item-formulario {
     display: flex;
     flex-direction: column;
@@ -80,10 +85,10 @@ a{
 .titulo-formulario {
     text-align: center;
     font-size: 1.5rem;
-    white-space: nowrap;          /* Evita que el texto se divida en varias líneas */
-    overflow: hidden;             /* Oculta el texto que se desborda */
-    text-overflow: ellipsis;      /* Agrega los puntos suspensivos al final */
-    width: 100%;                  /* O ajusta el ancho según lo necesites */
-    display: inline-block;        /* Para que el texto no se estire */
-  }
-  
+    white-space: nowrap; /* Prevents text wrapping */
+    overflow: hidden; /* Hides overflowing text */
+    text-overflow: ellipsis; /* Adds ellipsis for overflow */
+    width: 100%; /* Adjust width as needed */
+    display: inline-block; /* Prevents text stretching */
+}
+
