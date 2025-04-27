@@ -82,7 +82,7 @@
     <div class="sidebar-fixed">
         <div class="sidebar-buttons">
             <!-- Botón Compartir -->
-            <button class="circle-btn blue-btn">
+            <button class="circle-btn blue-btn" id="shareFormBtn">
                 <div class="tooltip">Compartir <br> formulario</div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
                     <path
@@ -139,6 +139,16 @@
                 <button type="submit" class="btn-confirm">SI D:</button>
             </form>
         </div>
+    </div>
+</div>
+
+<div id="shareOverlay" class="overlay hidden">
+    <div class="share-box">
+        <p class="share-text">Código: <span id="formCode">{{ $formulario->id }}</span></p>
+        <input type="text" id="shareUrl" class="share-input" value="{{ url('responderFormulario', ['id' => $formulario->id]) }}" readonly>
+        <button id="copyCodeBtn" class="btn-copy">Copiar Código</button>
+        <button id="copyUrlBtn" class="btn-copy">Copiar URL</button>
+        <button id="closeShareOverlay" class="btn-cancel">Cerrar</button>
     </div>
 </div>
 

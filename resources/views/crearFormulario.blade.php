@@ -43,14 +43,6 @@
     <!-- Rectángulo derecho (barra lateral fija) -->
     <div class="sidebar-fixed">
         <div class="sidebar-buttons">
-            <button class="circle-btn blue-btn">
-                <div class="tooltip">Compartir <br> formulario</div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
-                    <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5" />
-                </svg>
-            </button>
-
-
             <button class="circle-btn blue-btn" type="submit" id="guardarFormularioBtn">
                 <div class="tooltip">Guardar <br> formulario</div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
@@ -58,17 +50,6 @@
                     <path d="M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z" />
                 </svg>
             </button>
-
-
-
-            <button class="circle-btn blue-btn">
-                <div class="tooltip">Ver <br> respuestas</div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
-                    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z" />
-                    <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0" />
-                </svg>
-            </button>
-
         </div>
 
         <div class="sidebar-bottom-btn">
