@@ -484,3 +484,50 @@ body {
     width: 100%; /* Asegura que ocupe todo el ancho disponible */
     box-sizing: border-box; /* Incluye padding y border en el ancho */
 }
+
+/* Styles for the share overlay */
+#shareOverlay .share-box {
+    background-color: #00AFEF;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+    text-align: center;
+    width: 300px;
+    margin: auto;
+}
+
+#shareOverlay .share-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#shareOverlay .share-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#shareOverlay .btn-copy {
+    background-color: white;
+    color: #00AFEF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Noto Sans', sans-serif;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#shareOverlay .btn-cancel {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Noto Sans', sans-serif;
+    cursor: pointer;
+}

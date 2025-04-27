@@ -76,13 +76,21 @@
             <!-- Rectángulo derecho (barra lateral fija) -->
     <div class="sidebar-fixed">
         <div class="sidebar-buttons">
-            <button class="circle-btn blue-btn">
+            <button class="circle-btn blue-btn" id="shareFormBtn">
                 <div class="tooltip">Compartir <br> formulario</div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16">
                     <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.5 2.5 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5" />
                 </svg>
             </button>
-
+            <div id="shareOverlay" class="overlay hidden">
+                <div class="share-box">
+                    <p class="share-text">Código: <span id="formCode">{{ $formulario->id }}</span></p>
+                    <input type="text" id="shareUrl" class="share-input" value="{{ url('responderFormulario', ['id' => $formulario->id]) }}" readonly>
+                    <button id="copyCodeBtn" class="btn-copy">Copiar Código</button>
+                    <button id="copyUrlBtn" class="btn-copy">Copiar URL</button>
+                    <button id="closeShareOverlay" class="btn-cancel">Cerrar</button>
+                </div>
+            </div>
         </div>
 
         <div class="sidebar-bottom-btn">
@@ -111,22 +119,5 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('input', function (event) {
-        if (event.target.classList.contains('auto-resize')) {
-            event.target.style.height = 'auto'; // Resetea la altura
-            event.target.style.height = event.target.scrollHeight + 'px'; // Ajusta la altura al contenido
-        }
-    });
-
-    // Mostrar el overlay al hacer clic en el botón de eliminar
-    document.getElementById('deleteFormBtn').addEventListener('click', function () {
-        document.getElementById('deleteOverlay').classList.remove('hidden');
-    });
-
-    // Ocultar el overlay al hacer clic en el botón de cancelar
-    document.getElementById('cancelDelete').addEventListener('click', function () {
-        document.getElementById('deleteOverlay').classList.add('hidden');
-    });
-</script>
+<script src="{{ asset('js/form-builder.js') }}"></script>
 @endsection

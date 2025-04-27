@@ -2,51 +2,52 @@ document.addEventListener("DOMContentLoaded", () => {
     const formFieldsContainer = document.getElementById("formFieldsContainer");
 
     // Delegación de eventos para eliminar preguntas
-    formFieldsContainer.addEventListener("click", (e) => {
-        const deleteButton = e.target.closest(".delete-question-btn");
-        if (deleteButton) {
-            const questionBlock = deleteButton.closest(".question-block");
-            if (questionBlock) {
-                // Eliminar la línea punteada asociada
-                const dividerLine = questionBlock.nextElementSibling;
-                if (dividerLine && dividerLine.classList.contains("divider-line")) {
-                    dividerLine.remove();
+    if (formFieldsContainer) {
+        formFieldsContainer.addEventListener("click", (e) => {
+            const deleteButton = e.target.closest(".delete-question-btn");
+            if (deleteButton) {
+                const questionBlock = deleteButton.closest(".question-block");
+                if (questionBlock) {
+                    const dividerLine = questionBlock.nextElementSibling;
+                    if (dividerLine && dividerLine.classList.contains("divider-line")) {
+                        dividerLine.remove();
+                    }
+                    questionBlock.remove();
                 }
-                questionBlock.remove();
             }
-        }
-    });
+        });
 
-    // Delegación de eventos para eliminar opciones
-    formFieldsContainer.addEventListener("click", (e) => {
-        const deleteOptionButton = e.target.closest(".delete-option-btn");
-        if (deleteOptionButton) {
-            const optionItem = deleteOptionButton.closest(".option-item");
-            if (optionItem) {
-                optionItem.remove();
+        // Delegación de eventos para eliminar opciones
+        formFieldsContainer.addEventListener("click", (e) => {
+            const deleteOptionButton = e.target.closest(".delete-option-btn");
+            if (deleteOptionButton) {
+                const optionItem = deleteOptionButton.closest(".option-item");
+                if (optionItem) {
+                    optionItem.remove();
+                }
             }
-        }
-    });
+        });
 
-    // Delegación de eventos para agregar nuevas opciones
-    formFieldsContainer.addEventListener("click", (e) => {
-        const addOptionButton = e.target.closest(".add-option-btn");
-        if (addOptionButton) {
-            const multipleOptionsContainer = addOptionButton.previousElementSibling; // Contenedor de opciones
-            if (multipleOptionsContainer && multipleOptionsContainer.classList.contains("multiple-options")) {
-                const newOption = document.createElement("div");
-                newOption.classList.add("option-item");
+        // Delegación de eventos para agregar nuevas opciones
+        formFieldsContainer.addEventListener("click", (e) => {
+            const addOptionButton = e.target.closest(".add-option-btn");
+            if (addOptionButton) {
+                const multipleOptionsContainer = addOptionButton.previousElementSibling;
+                if (multipleOptionsContainer && multipleOptionsContainer.classList.contains("multiple-options")) {
+                    const newOption = document.createElement("div");
+                    newOption.classList.add("option-item");
 
-                newOption.innerHTML = `
-                    <input type="radio" disabled>
-                    <div class="editable-option" contenteditable="true" spellcheck="false">Nueva opción</div>
-                    <button type="button" class="delete-option-btn">🗑️</button>
-                `;
+                    newOption.innerHTML = `
+                        <input type="radio" disabled>
+                        <div class="editable-option" contenteditable="true" spellcheck="false">Nueva opción</div>
+                        <button type="button" class="delete-option-btn">🗑️</button>
+                    `;
 
-                multipleOptionsContainer.appendChild(newOption);
+                    multipleOptionsContainer.appendChild(newOption);
+                }
             }
-        }
-    });
+        });
+    }
 
     // Mostrar/ocultar los botones al hacer clic en "+ Agregar"
     const addFieldToggle = document.getElementById("addFieldToggle");
@@ -57,7 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
             fieldOptions.classList.toggle("hidden");
         });
 
-        // Delegación de eventos para los 4 botones de agregar preguntas
         fieldOptions.addEventListener("click", (e) => {
             const fieldOption = e.target.closest(".field-option");
             if (fieldOption) {
@@ -93,52 +93,93 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Guardar el formulario
-    document.getElementById("guardarFormularioBtn").addEventListener("click", () => {
-        const tituloFormulario = document.querySelector(".editable-text").innerText.trim();
-        const preguntas = [];
+    const guardarFormularioBtn = document.getElementById("guardarFormularioBtn");
+    if (guardarFormularioBtn) {
+        guardarFormularioBtn.addEventListener("click", () => {
+            const tituloFormulario = document.querySelector(".editable-text").innerText.trim();
+            const preguntas = [];
 
-        document.querySelectorAll(".question-block").forEach((questionBlock) => {
-            // Mapeo de tipos del frontend a los valores esperados por la base de datos
-            const tipoMap = {
-                text: "Texto",
-                multiple: "Opción Múltiple",
-                number: "Número",
-                date: "Fecha",
-            };
+            document.querySelectorAll(".question-block").forEach((questionBlock) => {
+                const tipoMap = {
+                    text: "Texto",
+                    multiple: "Opción Múltiple",
+                    number: "Número",
+                    date: "Fecha",
+                };
 
-            const pregunta = {
-                id: questionBlock.dataset.id || null, // ID de la pregunta (si existe)
-                pregunta: questionBlock.querySelector(".editable-question").innerText.trim(),
-                tipo: tipoMap[questionBlock.dataset.type] || questionBlock.dataset.type, // Mapear el tipo
-            };
+                const pregunta = {
+                    id: questionBlock.dataset.id || null,
+                    pregunta: questionBlock.querySelector(".editable-question").innerText.trim(),
+                    tipo: tipoMap[questionBlock.dataset.type] || questionBlock.dataset.type,
+                };
 
-            // Si es de tipo "Opción Múltiple", agregar las opciones
-            if (pregunta.tipo === "Opción Múltiple") {
-                const opciones = [];
-                questionBlock.querySelectorAll(".editable-option").forEach((option) => {
-                    opciones.push(option.innerText.trim());
-                });
-                pregunta.opciones = opciones;
-            }
+                if (pregunta.tipo === "Opción Múltiple") {
+                    const opciones = [];
+                    questionBlock.querySelectorAll(".editable-option").forEach((option) => {
+                        opciones.push(option.innerText.trim());
+                    });
+                    pregunta.opciones = opciones;
+                }
 
-            preguntas.push(pregunta);
+                preguntas.push(pregunta);
+            });
+
+            document.getElementById("tituloFormulario").value = tituloFormulario;
+            document.getElementById("preguntasJson").value = JSON.stringify(preguntas);
+
+            const formId = document.getElementById("formularioCreate") ? "formularioCreate" : "formularioEdit";
+            document.getElementById(formId).submit();
+        });
+    }
+
+    // Mostrar el overlay al hacer clic en el botón de compartir
+    const shareFormBtn = document.getElementById("shareFormBtn");
+    const shareOverlay = document.getElementById("shareOverlay");
+    if (shareFormBtn && shareOverlay) {
+        shareFormBtn.addEventListener("click", () => {
+            shareOverlay.classList.remove("hidden");
         });
 
-        // Asignar los valores a los campos ocultos
-        document.getElementById("tituloFormulario").value = tituloFormulario;
-        document.getElementById("preguntasJson").value = JSON.stringify(preguntas);
+        // Copiar la URL al portapapeles
+        document.getElementById("copyUrlBtn").addEventListener("click", () => {
+            const shareUrl = document.getElementById("shareUrl");
+            shareUrl.select();
+            document.execCommand("copy");
+            alert("URL copiada al portapapeles");
+        });
 
-        // Determinar el formulario a enviar (crear o editar)
-        const formId = document.getElementById("formularioCreate") ? "formularioCreate" : "formularioEdit";
-        document.getElementById(formId).submit();
-    });
+        // Copiar el código al portapapeles
+        document.getElementById("copyCodeBtn").addEventListener("click", () => {
+            const formCode = document.getElementById("formCode").innerText;
+            navigator.clipboard.writeText(formCode).then(() => {
+                alert("Código copiado al portapapeles");
+            });
+        });
 
-    //Eliminar formulario
-    document.getElementById('deleteFormBtn').addEventListener('click', function () {
-        document.getElementById('deleteOverlay').classList.toggle('hidden');
-    });
+        // Ocultar el overlay al hacer clic en el botón de cerrar
+        document.getElementById("closeShareOverlay").addEventListener("click", () => {
+            shareOverlay.classList.add("hidden");
+        });
+    }
 
-    document.getElementById('cancelDelete').addEventListener('click', function () {
-        document.getElementById('deleteOverlay').classList.add('hidden');
+    // Mostrar el overlay al hacer clic en el botón de eliminar
+    const deleteFormBtn = document.getElementById("deleteFormBtn");
+    const deleteOverlay = document.getElementById("deleteOverlay");
+    if (deleteFormBtn && deleteOverlay) {
+        deleteFormBtn.addEventListener("click", () => {
+            deleteOverlay.classList.remove("hidden");
+        });
+
+        document.getElementById("cancelDelete").addEventListener("click", () => {
+            deleteOverlay.classList.add("hidden");
+        });
+    }
+
+    // Ajustar altura de los campos de texto automáticamente
+    document.addEventListener("input", (event) => {
+        if (event.target.classList.contains("auto-resize")) {
+            event.target.style.height = "auto";
+            event.target.style.height = `${event.target.scrollHeight}px`;
+        }
     });
 });
